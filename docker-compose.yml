@@ -1,0 +1,21 @@
+services:
+
+  web:
+    build: ./web-app
+    container_name: ctf-web
+    ports:
+      - "8082:5000"
+    networks:
+      - ctf-network
+
+  target:
+    build: ./ssh-target
+    container_name: ctf-target
+    ports:
+      - "2223:22"
+    networks:
+      - ctf-network
+
+networks:
+  ctf-network:
+    driver: bridge
